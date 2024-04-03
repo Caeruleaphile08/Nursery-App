@@ -1,0 +1,205 @@
+{% load static %}
+{% load custom_filters %} <!-- Load the custom filter -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citrus Plants</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #ca87ae;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .plant-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .plant-item {
+            width: calc(25% - 20px);
+            margin: 10px;
+            text-align: center;
+            border: 3px solid #222121;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .plant-item:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px); /* Move up on hover */
+        }
+
+        .plant-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease; /* Smooth image zoom on hover */
+        }
+
+        .plant-item:hover img {
+            transform: scale(1.1); /* Zoom in on hover */
+        }
+
+        .add-to-cart-btn {
+            background-color: #ca87ae;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth button scaling on hover */
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: scale(1);
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #b66b99;
+            transform: scale(1.05); /* Slightly scale up on hover */
+        }
+
+        .product-info p {
+            font-size: 2em;
+            margin-bottom: 5px; /* Reduced margin */
+            transition: color 0.3s ease; /* Smooth color transition on hover */
+            color: #222121;
+        }
+
+        .product-info p:hover {
+            color: #ca87ae; /* Change color on hover */
+        }
+
+        .product-info h6 {
+            font-size: 1.5em;
+            margin-bottom: 5px; /* Reduced margin */
+            color: #b66b99;
+        }
+
+        /* Navbar Styles */
+        .alazea-main-menu {
+            padding: 10px;
+            background-color: #ca87ae;
+        }
+
+        .classy-nav-container .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand img {
+            max-height: 90px;
+            width: auto;
+        }
+
+        .classy-navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .classynav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .classynav ul li {
+            margin: 0 15px;
+        }
+
+        .classynav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: larger;
+            transition: color 0.3s ease;
+        }
+
+        .classynav ul li a:hover {
+            color: #b66b99;
+        }
+
+        .right-nav-items {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .right-nav-items {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ***** Navbar Area ***** -->
+    <div class="alazea-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <a href="{% url 'first' %}" class="nav-brand"><img src="{% static 'img/core-img/logo.png' %}" alt="" height="100" width="150"></a>
+
+                <nav class="classy-navbar justify-content-between" id="alazeaNav">
+                    <!-- Nav Brand -->
+                    <!-- Page Heading -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="#">My Cart</a></li>
+                            <li><a href="#">My Account</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="plant-container">
+        {% for plant in perinnial_plants %}
+            <div class="plant-item">
+                <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="{{ forloop.counter0|add:'1'|multiply:100 }}ms">
+                    <div class="product-img">
+                        <img src="{{ plant.picture.url }}" alt="{{ plant.name }}">
+                    </div>
+                    <div class="product-info mt-15 text-center">
+                        <p>{{ plant.name }}</p>
+                        <h6>${{ plant.price }}</h6>
+                        <button class="add-to-cart-btn">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+</body>
+</html>

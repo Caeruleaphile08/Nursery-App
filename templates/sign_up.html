@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #e0e0e0 url(https://img.freepik.com/premium-photo/home-plants-growing-eco-friendly-composition-with-garden-tools-plants-wooden-board-green-backgrounds-with-copy-space_774778-4454.jpg?w=996) center/cover no-repeat;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center; /* Align the container to the right */
+      align-items: center;
+    }
+
+    .container {
+      right: 10%;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      height: auto;
+      margin-left: 0; 
+      justify-content: center; /* Align the container to the right */
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      width: 100%;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      background-color:rgba(185, 90, 185, 1);
+      color: #fff;
+      font-weight: bold;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome!</h1>
+      <p>Sign up to create account.</p>
+    </header>
+    <main>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="username" placeholder="Enter your first name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+    </main>
+    <footer>
+      <p>Already have an account? <a href="{% url 'login' %}">SignIn here</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

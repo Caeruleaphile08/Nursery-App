@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Seller</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            margin-bottom: 16px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.success {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Seller</h2>
+
+        <div class="contact-info">
+            <p><i class="fas fa-user"></i> <strong>Seller's Name:</strong> John Doe</p>
+            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> vidhai@gmail</p>
+            <p><i class="fas fa-phone"></i> <strong>Phone Number:</strong> +1 234 122 122</p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> 3, T. Ponnambalam Salai, Kolapakkam, Chennai, Tamil Nadu 600122</p>
+        </div>
+<hr><br>
+        <form id="contactForm" action="#" method="post">
+            <label for="name"><i class="fas fa-user"></i> Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email"><i class="fas fa-envelope"></i> Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="subject"><i class="fas fa-heading"></i> Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message"><i class="fas fa-comment"></i> Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); 
+            showAlert('Message sent successfully!', 'success');
+        });
+
+        function showAlert(message, type) {
+            alert(message); 
+            if (type === 'success') {
+                alert.style.backgroundColor = '#28a745';
+                alert.style.color = '#fff';
+            }
+        }
+    </script>
+</body>
+</html>
